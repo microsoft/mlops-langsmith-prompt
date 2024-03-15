@@ -1,3 +1,8 @@
+ipykernel
+python-dotenv
 langchain==0.1.11
 langchain-openai==0.0.8
 langsmith==0.1.23
+langchain-openai 
+duckduckgo-search
+langchainhub

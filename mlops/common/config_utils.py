@@ -31,5 +31,6 @@ class MLOpsConfig:
         if flowconfig_name in self.flow_configs:
             return self.flow_configs[flowconfig_name]
 
+
 if __name__ == "__main__":
     mlconfig = MLOpsConfig()

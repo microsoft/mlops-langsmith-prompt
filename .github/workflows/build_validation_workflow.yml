@@ -7,7 +7,7 @@ env:
   PYTHON_VERSION: "3.9"
 
 jobs:
-  run-unit-tests:
+  run-quality-tests:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

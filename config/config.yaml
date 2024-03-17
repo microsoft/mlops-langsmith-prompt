@@ -1,5 +1,13 @@
 #Configuration parameters
 
 
+# Azure OpenAI configuration. 
+aoai_config:
+  aoai_api_base: ${AZURE_OPENAI_ENDPOINT}
+  aoai_api_type: azure
+  aoai_api_version: 2024-02-01
+  aoai_api_key: ${AZURE_OPENAI_API_KEY}
+  aoai_deployment_name: "gpt-35-turbo"
+
 search_flow_configs:
   search_flow_pr:

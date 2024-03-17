@@ -26,4 +26,4 @@ jobs:
     uses: ./.github/workflows/platform_pr_workflow.yml
     with:
       exec_environment: ${{ inputs.exec_environment || 'pr' }}
-      model_type: ${{ inputs.flow_type }}
+      flow_type: ${{ inputs.flow_type }}

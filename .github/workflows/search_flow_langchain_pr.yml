@@ -1,4 +1,4 @@
-name: Search Flow PR Workflow
+name: Search Flow LangChain PR Workflow
 
 on:
   pull_request:

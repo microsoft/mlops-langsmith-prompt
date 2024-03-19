@@ -33,6 +33,11 @@ jobs:
     
       - name: Execute Flow
         uses: ./.github/actions/execute_shell_code
+        env:
+            LANGCHAIN_API_KEY: ${{ secrets.LANGCHAIN_API_KEY }}
+            LANGCHAIN_TRACING_V2: ${{ secrets.LANGCHAIN_TRACING_V2 }}
+            AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
+            AZURE_OPENAI_ENDPOINT: ${{ secrets.AZURE_OPENAI_ENDPOINT }}
         with:
             script_parameter: |
                 python -u -m flows.${{ inputs.flow_type }}.flow

@@ -1,0 +1,30 @@
+name: Search Flow LangChain PR Workflow
+
+on:
+  pull_request:
+    branches:
+      - "main"
+    paths:
+      - .github/*
+      - mlops/*
+      - flows/search_flow_langchain/*
+      - flows/search_flow_langchain_evaluation/*
+  workflow_call:
+    inputs:
+      exec_environment:
+        type: string
+        description: "The environment to run the workflow in"
+        required: true
+        default: "pr"
+
+jobs:
+  run-pr-workflow:
+    uses: ./.github/workflows/platform_pr_workflow.yml
+    with:
+      exec_environment: ${{ inputs.exec_environment || 'pr' }}
+      flow_type: "search_flow_langchain"
+    secrets:
+      LANGCHAIN_API_KEY: ${{ secrets.LANGCHAIN_API_KEY }}
+      LANGCHAIN_TRACING_V2: ${{ secrets.LANGCHAIN_TRACING_V2 }}
+      AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
+      AZURE_OPENAI_ENDPOINT: ${{ secrets.AZURE_OPENAI_ENDPOINT }}

@@ -2,12 +2,24 @@
 
 
 # Azure OpenAI configuration. 
-aoai_config:
+gpt35_turbo_config:
   aoai_api_base: ${AZURE_OPENAI_ENDPOINT}
   aoai_api_type: azure
-  aoai_api_version: 2024-02-01
+  aoai_api_version: "2024-02-01"
   aoai_api_key: ${AZURE_OPENAI_API_KEY}
   aoai_deployment_name: "gpt-35-turbo"
+
+# Azure OpenAI configuration. 
+gpt4_config:
+  aoai_api_base: ${AZURE_OPENAI_ENDPOINT}
+  aoai_api_type: azure
+  aoai_api_version: "2024-02-01"
+  aoai_api_key: ${AZURE_OPENAI_API_KEY}
+  aoai_deployment_name: "gpt-4" 
+
+bing_search_config:
+  bing_subscription_key: ${BING_SUBSCRIPTION_KEY}
+  bing_search_url: "https://api.bing.microsoft.com/v7.0/search"
 
 search_flow_configs:
   search_flow_pr:

@@ -6,8 +6,11 @@ from mlops.common.config_utils import MLOpsConfig
 from mlops.common.naming_utils import generate_run_name
 
 
+PROJECT_NAME = "Search Flow Python"
+
+
 def main():
-    """Implement search flow."""
+    """Implement search flow using Python SDK."""
     config = MLOpsConfig()
 
     # This can be a user input to your app
@@ -17,7 +20,8 @@ def main():
     pipeline = RunTree(
         name=generate_run_name(),
         run_type="chain",
-        inputs={"question": question}
+        inputs={"question": question},
+        project_name=PROJECT_NAME
     )
 
     # This can be retrieved in a retrieval step
@@ -37,12 +41,12 @@ def main():
     )
     # Generate a completion
     client = AzureOpenAI(
-        api_key=config.aoai_config["aoai_api_key"],
-        api_version=config.aoai_config["aoai_api_version"],
-        azure_endpoint=config.aoai_config["aoai_api_base"]
+        api_key=config.gpt35_turbo_config["aoai_api_key"],
+        api_version=config.gpt35_turbo_config["aoai_api_version"],
+        azure_endpoint=config.gpt35_turbo_config["aoai_api_base"]
     )
     chat_completion = client.chat.completions.create(
-        model=config.aoai_config["aoai_deployment_name"], messages=messages
+        model=config.gpt35_turbo_config["aoai_deployment_name"], messages=messages
     )
 
     # End the runs and log them

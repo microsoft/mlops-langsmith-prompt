@@ -41,12 +41,12 @@ def main():
     )
     # Generate a completion
     client = AzureOpenAI(
-        api_key=config.aoai_config["aoai_api_key"],
-        api_version=config.aoai_config["aoai_api_version"],
-        azure_endpoint=config.aoai_config["aoai_api_base"]
+        api_key=config.gpt35_turbo_config["aoai_api_key"],
+        api_version=config.gpt35_turbo_config["aoai_api_version"],
+        azure_endpoint=config.gpt35_turbo_config["aoai_api_base"]
     )
     chat_completion = client.chat.completions.create(
-        model=config.aoai_config["aoai_deployment_name"], messages=messages
+        model=config.gpt35_turbo_config["aoai_deployment_name"], messages=messages
     )
 
     # End the runs and log them

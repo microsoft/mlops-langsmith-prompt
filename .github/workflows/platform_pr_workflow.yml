@@ -47,6 +47,8 @@ jobs:
     
       - name: Execute Flow
         uses: ./.github/actions/execute_shell_code
+        env:
+            BUILD_SOURCEBRANCHNAME: ${{ github.head_ref || github.ref_name }}
         with:
             script_parameter: |
                 python -u -m flows.${{ inputs.flow_type }}.flow

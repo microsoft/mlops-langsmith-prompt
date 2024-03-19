@@ -1,0 +1,30 @@
+name: Search Flow PR Workflow
+
+on:
+  pull_request:
+    branches:
+      - "main"
+    paths:
+      - .github/*
+      - mlops/*
+      - flows/search_flow_python/*
+      - flows/search_flow_python_evaluation/*
+  workflow_call:
+    inputs:
+      exec_environment:
+        type: string
+        description: "The environment to run the workflow in"
+        required: true
+        default: "pr"
+      flow_type:
+        type: string
+        description: "The type of model to run the workflow for"
+        required: true
+        default: "search_flow_python"
+
+jobs:
+  run-pr-workflow:
+    uses: ./.github/workflows/platform_pr_workflow.yml
+    with:
+      exec_environment: ${{ inputs.exec_environment || 'pr' }}
+      flow_type: ${{ inputs.flow_type }}

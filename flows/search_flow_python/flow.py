@@ -6,6 +6,9 @@ from mlops.common.config_utils import MLOpsConfig
 from mlops.common.naming_utils import generate_run_name
 
 
+PROJECT_NAME = "Search Flow Python"
+
+
 def main():
     """Implement search flow."""
     config = MLOpsConfig()
@@ -17,7 +20,8 @@ def main():
     pipeline = RunTree(
         name=generate_run_name(),
         run_type="chain",
-        inputs={"question": question}
+        inputs={"question": question},
+        project_name=PROJECT_NAME
     )
 
     # This can be retrieved in a retrieval step

@@ -12,6 +12,20 @@ on:
         type: string
         description: "type of flow to execute"
         required: true
+    secrets:
+      LANGCHAIN_API_KEY:
+        description: "LangSmith API Key."
+        required: true
+      LANGCHAIN_TRACING_V2:
+        description: "Control tracing capabilities"
+        required: true
+      AZURE_OPENAI_API_KEY:
+        description: "Azure Open AI key."
+        required: true
+      AZURE_OPENAI_ENDPOINT:
+        description: "Azure Open AI Endpoint."
+        required: true
+
 jobs:
   build-validation:
     name: Build Validation
@@ -33,11 +47,6 @@ jobs:
     
       - name: Execute Flow
         uses: ./.github/actions/execute_shell_code
-        env:
-            LANGCHAIN_API_KEY: ${{ secrets.LANGCHAIN_API_KEY }}
-            LANGCHAIN_TRACING_V2: ${{ secrets.LANGCHAIN_TRACING_V2 }}
-            AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
-            AZURE_OPENAI_ENDPOINT: ${{ secrets.AZURE_OPENAI_ENDPOINT }}
         with:
             script_parameter: |
                 python -u -m flows.${{ inputs.flow_type }}.flow

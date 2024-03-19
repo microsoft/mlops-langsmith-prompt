@@ -2,5 +2,4 @@ python-dotenv
 langchain
 langchain-openai
 langsmith
-duckduckgo-search
 langchainhub

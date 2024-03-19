@@ -2,7 +2,6 @@ python-dotenv
 langchain
 langchain-openai
 langsmith
-duckduckgo-search
 langchainhub
 flake8-docstrings==1.7.0
 flake8==6.1.0

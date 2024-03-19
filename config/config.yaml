@@ -21,5 +21,17 @@ bing_search_config:
   bing_subscription_key: ${BING_SUBSCRIPTION_KEY}
   bing_search_url: "https://api.bing.microsoft.com/v7.0/search"
 
+datasets:
+  language_translation_toy:
+    location: "data/language_translation_toy.csv"
+    description: "English-French pairs to check translation."
+    input_keys: ["input"]
+    output_keys: ["output"]
+  search_results_toy:
+    location: "data/search_results_toy.csv"
+    description: "Basic questions and associated answers."
+    input_keys: ["input"]
+    output_keys: ["output"]
+
 search_flow_configs:
   search_flow_pr:

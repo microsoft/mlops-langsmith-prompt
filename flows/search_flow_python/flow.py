@@ -10,7 +10,7 @@ PROJECT_NAME = "Search Flow Python"
 
 
 def main():
-    """Implement search flow."""
+    """Implement search flow using Python SDK."""
     config = MLOpsConfig()
 
     # This can be a user input to your app

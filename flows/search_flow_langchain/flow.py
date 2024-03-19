@@ -12,6 +12,7 @@ PROJECT_NAME = "Search Flow LangChain"
 
 
 def main():
+    """Implement search flow using LangChain."""
     # It loads env variables as well behind the scene.
     config = MLOpsConfig()
 

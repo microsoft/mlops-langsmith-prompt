@@ -52,4 +52,13 @@ jobs:
             BUILD_BUILDID: ${{ github.run_id }}
         with:
             script_parameter: |
-                python -u -m flows.${{ inputs.flow_type }}.flow
+                python -u -m flows.${{ inputs.flow_type }}.run_flow
+
+      - name: Execute Evaluation
+        uses: ./.github/actions/execute_shell_code
+        env:
+            BUILD_SOURCEBRANCHNAME: ${{ github.head_ref || github.ref_name }}
+            BUILD_BUILDID: ${{ github.run_id }}
+        with:
+            script_parameter: |
+                python -u -m flows.${{ inputs.flow_type }}.evaluate

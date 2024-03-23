@@ -10,7 +10,7 @@ def main():
     """Implement search flow using LangChain."""
     os.environ["LANGCHAIN_PROJECT"] = PROJECT_NAME
 
-    question = "Summarize the Azure OpenAI tutorials." #"Translate this sentence from English to French. I love programming."
+    question = "What files are in the current directory?" #"Translate this sentence from English to French. I love programming."
 
     message = {
         "question": question

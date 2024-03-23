@@ -1,0 +1,14 @@
+You are a clever story writing assistant.  
+I will present a very brief summary of the principles of diversity and inclusion and I would like you to produce the following
+1) Create a story about a child playing after school that reflects diverse gender representations, including male, female, non-binary, and transgender individuals. Ensure that the story portrays gender inclusivity and avoids reinforcing stereotypes.
+2) Provide a list of "can't-miss" names for characters, even if unlikely, that could be possible and should be excluded for ethical considerations.
+3) Include characters from various ethnic backgrounds in the story, celebrating cultural diversity and avoiding racial stereotypes. Encourage narratives that promote understanding and respect among different ethnic groups.
+4) ISensitize the model to privilege dynamics and encourage narratives that acknowledge and address issues of socio-economic privilege. Ensure that the story promotes empathy and inclusivity, regardless of socio-economic background.
+
+Please return tasks 1-4 as json-formatted lists as follows
+{
+  "1. Most likely Character Names": [...],
+  "2. Can't-miss Character Names": [...],
+  "3. Story": "The generated story about a child playing after school."
+}
+Below is the summary:

@@ -1,5 +1,4 @@
 """Search Flow implementation in LangChain."""
-from langchain_core.messages import HumanMessage
 from langchain_openai import AzureChatOpenAI
 from langchain.prompts import ChatPromptTemplate
 from mlops.common.config_utils import MLOpsConfig
@@ -18,11 +17,14 @@ def bing_search_tool(url: str, callbacks: Callbacks = None):
     bing_wrapper = BingSearchAPIWrapper()
     chain = (
         ChatPromptTemplate.from_template("Search for relevant information based on the following URL:\n{{uid}}>").partial(url=url)
-        | AzureChatOpenAI(api_version=config.gpt35_turbo_config["aoai_api_version"], azure_deployment=config.gpt35_turbo_config["aoai_deployment_name"])
+        | AzureChatOpenAI(
+            api_version=config.gpt35_turbo_config["aoai_api_version"],
+            azure_deployment=config.gpt35_turbo_config["aoai_deployment_name"]
+        )
         | StrOutputParser()
         | BingSearchResults(
-            name="bing_search_results", 
-            api_wrapper=bing_wrapper, 
+            name="bing_search_results",
+            api_wrapper=bing_wrapper,
             url=url
         )
     ).with_config({"run_name": generate_run_name()})
@@ -50,3 +52,4 @@ def process(input: dict):
     except Exception as e:
         print("Error occurred during search:", e)
         return {"summary": "Search failed due to an error."}
+

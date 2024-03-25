@@ -52,4 +52,3 @@ def process(input: dict):
     except Exception as e:
         print("Error occurred during search:", e)
         return {"summary": "Search failed due to an error."}
-

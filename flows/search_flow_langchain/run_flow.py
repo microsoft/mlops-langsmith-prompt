@@ -10,13 +10,11 @@ def main():
     """Implement search flow using LangChain."""
     os.environ["LANGCHAIN_PROJECT"] = PROJECT_NAME
     url = "https://learn.microsoft.com/en-us/azure/machine-learning/prompt-flow/how-to-integrate-with-langchain?view=azureml-api-2"
-    question = "Search for relevant information at {url}"
 
     message = {
-        "question": question,
          "url": url
     }
-    print("message:", message)
+    # print("message:", message)
     process(message)
 
 

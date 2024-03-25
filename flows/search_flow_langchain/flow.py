@@ -1,5 +1,4 @@
 """Search Flow implementation in LangChain."""
-import requests
 from langchain_core.messages import HumanMessage
 from langchain_openai import AzureChatOpenAI
 from langchain.prompts import ChatPromptTemplate
@@ -11,15 +10,14 @@ from langchain.schema.output_parser import StrOutputParser
 from langchain_community.utilities import BingSearchAPIWrapper
 from langchain_community.tools.bing_search import BingSearchResults
 
+
 @tool
 def bing_search_tool(url: str, callbacks: Callbacks = None):
     """Search using the Azure Bing Search API."""
     config = MLOpsConfig()
     bing_wrapper = BingSearchAPIWrapper()
     chain = (
-        ChatPromptTemplate.from_template(
-             "Search the web for relevant information based on the following URL:\n{{uid}}>"
-        ).partial(url=url)
+        ChatPromptTemplate.from_template("Search for relevant information based on the following URL:\n{{uid}}>").partial(url=url)
         | AzureChatOpenAI(api_version=config.gpt35_turbo_config["aoai_api_version"], azure_deployment=config.gpt35_turbo_config["aoai_deployment_name"])
         | StrOutputParser()
         | BingSearchResults(
@@ -34,6 +32,7 @@ def bing_search_tool(url: str, callbacks: Callbacks = None):
         {"callbacks": callbacks},
     )
 
+
 def process(input: dict):
     """Implement search flow using LangChain.
 
@@ -43,12 +42,9 @@ def process(input: dict):
     Returns:
         dict: A dictionary containing the search result.
     """
-    message = HumanMessage(
-        content=input["question"]
-    )
-    search_result = bing_search_tool(input["url"])
     try:
         search_result = bing_search_tool(input["url"])
+
         # print("Search Result:", search_result)
         return {"summary": search_result}
     except Exception as e:

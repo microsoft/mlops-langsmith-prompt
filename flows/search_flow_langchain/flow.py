@@ -16,7 +16,8 @@ def bing_search_tool(url: str, callbacks: Callbacks = None):
     config = MLOpsConfig()
     bing_wrapper = BingSearchAPIWrapper()
     chain = (
-        ChatPromptTemplate.from_template("Search for relevant information based on the following URL:\n{{uid}}>").partial(url=url)
+        ChatPromptTemplate.from_template("Search for relevant information based on the following URL:\n{{uid}}>"
+        ).partial(url=url)
         | AzureChatOpenAI(
             api_version=config.gpt35_turbo_config["aoai_api_version"],
             azure_deployment=config.gpt35_turbo_config["aoai_deployment_name"]

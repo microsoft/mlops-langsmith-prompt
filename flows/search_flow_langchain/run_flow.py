@@ -12,9 +12,7 @@ def main():
     url = ("https://learn.microsoft.com/en-us/azure/machine-learning/"
            "prompt-flow/how-to-integrate-with-langchain?view=azureml-api-2")
 
-    message = {
-         "url": url
-    }
+    message = {"url": url}
     process(message)
 
 

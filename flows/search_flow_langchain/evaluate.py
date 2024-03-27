@@ -33,7 +33,7 @@ def main():
     )
 
     client.run_on_dataset(
-        dataset_name="language_translation_toy",
+        dataset_name="search_results_toy",
         llm_or_chain_factory=process,
         evaluation=eval_config,
         verbose=True,

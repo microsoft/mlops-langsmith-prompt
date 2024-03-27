@@ -1,7 +1,7 @@
 python-dotenv
 langchain
 langchain-openai
-langsmith
+langsmith==0.1.27
 langchainhub
 flake8-docstrings==1.7.0
 flake8==6.1.0

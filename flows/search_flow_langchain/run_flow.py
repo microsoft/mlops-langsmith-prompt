@@ -9,13 +9,9 @@ PROJECT_NAME = "Search Flow LangChain"
 def main():
     """Implement search flow using LangChain."""
     os.environ["LANGCHAIN_PROJECT"] = PROJECT_NAME
+    question = "What is Microsoft's mission?"
 
-    question = "Translate this sentence from English to French. I love programming."
-
-    message = {
-        "question": question
-    }
-
+    message = {"question": question}
     process(message)
 
 

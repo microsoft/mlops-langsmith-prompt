@@ -15,12 +15,12 @@ from dataclasses import dataclass
 
 @dataclass
 class SummaryResult:
-
     """A data class representing the result of a summary.
 
     Attributes:
         content (str): The summarized content.
     """
+
     content: str
 
 
@@ -43,7 +43,7 @@ def summarize_tool(url: str, callbacks: Callbacks = None):
                        'Chrome/58.0.3029.110 Safari/537.3')
     }
     response = requests.get(url, headers=headers)
-    if response.status_code==200:
+    if response.status_code == 200:
         soup = BeautifulSoup(response.content, 'html.parser')
         text = ' '.join([p.text for p in soup.find_all('p')])
 
@@ -78,7 +78,7 @@ def process(input: dict):
         dict: A dictionary containing the search result.
     """
     try:
-        results  = bing_search_tool(input["question"])
+        results = bing_search_tool(input["question"])
         top_link = results[0]['link']
         result = summarize_tool(top_link)
         return {"answer": result}

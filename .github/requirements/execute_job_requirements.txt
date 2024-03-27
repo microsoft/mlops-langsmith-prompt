@@ -1,7 +1,7 @@
 python-dotenv
 langchain
 langchain-openai
-langsmith
+langsmith==0.1.27
 langchainhub
 pandas
 beautifulsoup4

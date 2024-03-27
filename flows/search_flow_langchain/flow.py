@@ -27,7 +27,12 @@ class SummaryResult:
 @tool
 def bing_search_tool(question: str, callbacks: Callbacks = None):
     """Search using the Azure Bing Search API."""
-    bing_wrapper = BingSearchAPIWrapper()
+    # initialize environment
+    config = MLOpsConfig()
+    bing_details = config.bing_search_config
+    bing_wrapper = BingSearchAPIWrapper(
+        bing_search_url=bing_details["bing_search_url"],
+        bing_subscription_key=bing_details["bing_subscription_key"])
     # Run query through BingSearch and return snippet, title, and link metadata
     search_results = bing_wrapper.results(question, 5)
     return search_results

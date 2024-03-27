@@ -25,6 +25,9 @@ on:
       AZURE_OPENAI_ENDPOINT:
         description: "Azure Open AI Endpoint."
         required: true
+      BING_SUBSCRIPTION_KEY:
+        description: "Bing API Key."
+        required: false
 
 jobs:
   build-validation:

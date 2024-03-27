@@ -15,6 +15,7 @@ from dataclasses import dataclass
 
 @dataclass
 class SummaryResult:
+
     """A data class representing the result of a summary.
 
     Attributes:
@@ -27,7 +28,8 @@ class SummaryResult:
 def bing_search_tool(question: str, callbacks: Callbacks = None):
     """Search using the Azure Bing Search API."""
     bing_wrapper = BingSearchAPIWrapper()
-    search_results = bing_wrapper.results(question, 5)  # Run query through BingSearch (return snippet, title, and link metadata)
+    # Run query through BingSearch and return snippet, title, and link metadata
+    search_results = bing_wrapper.results(question, 5)
     return search_results
 
 

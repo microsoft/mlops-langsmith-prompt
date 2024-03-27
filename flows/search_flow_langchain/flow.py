@@ -9,21 +9,25 @@ from langchain.tools import tool
 from langchain.callbacks.manager import Callbacks
 from langchain.schema.output_parser import StrOutputParser
 from langchain_community.utilities import BingSearchAPIWrapper
-from langchain_community.tools.bing_search import BingSearchResults
 from bs4 import BeautifulSoup
 from dataclasses import dataclass
 
+
 @dataclass
 class SummaryResult:
+    """A data class representing the result of a summary.
+
+    Attributes:
+        content (str): The summarized content.
+    """
     content: str
 
 
 @tool
 def bing_search_tool(question: str, callbacks: Callbacks = None):
     """Search using the Azure Bing Search API."""
-    config = MLOpsConfig()
     bing_wrapper = BingSearchAPIWrapper()
-    search_results = bing_wrapper.results(question, 5) # Run query through BingSearch and return snippet, title, and link metadata
+    search_results = bing_wrapper.results(question, 5)  # Run query through BingSearch (return snippet, title, and link metadata)
     return search_results
 
 
@@ -31,7 +35,11 @@ def bing_search_tool(question: str, callbacks: Callbacks = None):
 def summarize_tool(url: str, callbacks: Callbacks = None):
     """Summarize a website."""
     config = MLOpsConfig()
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
+    headers = {
+        'User-Agent': ('Mozilla/5.0 (Windows NT 10.0; Win64; x64) '
+                       'AppleWebKit/537.36 (KHTML, like Gecko) '
+                       'Chrome/58.0.3029.110 Safari/537.3')
+    }
     response = requests.get(url, headers=headers)
     if response.status_code==200:
         soup = BeautifulSoup(response.content, 'html.parser')
@@ -46,7 +54,7 @@ def summarize_tool(url: str, callbacks: Callbacks = None):
                 azure_deployment=config.gpt35_turbo_config["aoai_deployment_name"]
             )
             | StrOutputParser()
-        ).with_config(run_name="Summarize Text")
+        ).with_config({"run_name": generate_run_name()})
 
         summary_text = summary_chain.invoke(
             {"text": text},

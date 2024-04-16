@@ -3,12 +3,12 @@ name: Search Flow LangChain PR Workflow
 on:
   pull_request:
     branches:
-      - "main"
+      - main
     paths:
-      - .github/*
-      - mlops/*
-      - flows/search_flow_langchain/*
-      - flows/search_flow_langchain_evaluation/*
+      - '.github/**'
+      - 'mlops/**'
+      - 'flows/search_flow_langchain/**'
+      - 'flows/search_flow_langchain_evaluation/**'
   workflow_call:
     inputs:
       exec_environment:

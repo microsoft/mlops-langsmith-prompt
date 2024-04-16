@@ -3,12 +3,12 @@ name: Search Flow Python PR Workflow
 on:
   pull_request:
     branches:
-      - "main"
+      - main
     paths:
-      - .github/*
-      - mlops/*
-      - flows/search_flow_python/*
-      - flows/search_flow_python_evaluation/*
+      - '.github/**'
+      - 'mlops/**'
+      - 'flows/search_flow_python/**'
+      - 'flows/search_flow_python_evaluation/**'
   workflow_call:
     inputs:
       exec_environment:
